@@ -24,7 +24,7 @@ public class KullaniciDAO {
 
         ResultSet rs = ps.executeQuery();
 
-        while (rs.next());
+        while (rs.next())
 
         {
             vtSifre = rs.getString("sifre");
@@ -45,7 +45,7 @@ public class KullaniciDAO {
 
 
 
-        
+
     }
 
 }
