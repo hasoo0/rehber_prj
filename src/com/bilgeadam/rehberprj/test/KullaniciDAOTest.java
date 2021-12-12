@@ -26,6 +26,10 @@ public class KullaniciDAOTest {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+
+
+
+
         }
     }
 
