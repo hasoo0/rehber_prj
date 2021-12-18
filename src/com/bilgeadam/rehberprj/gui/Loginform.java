@@ -21,14 +21,13 @@ public class Loginform extends JFrame {
         // Formun carpisina basildiginda programdan ciksin kodu.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-       // Ekrana gore ortala demek altdaki komut.
-
-
+        
         setTitle("Giris Ekrani");
 
         setSize(300,200);
 
+
+        // Ekrana gore ortala demek altdaki komut.
         setLocationRelativeTo(null);
 
 
@@ -39,7 +38,7 @@ public class Loginform extends JFrame {
 
                 if (adTF.getText().length() == 0)
                 {
-                    JOptionPane.showMessageDialog(null, "Ad alani bos gecilemez!");
+                    JOptionPane.showMessageDialog(null, "Ad alanini bos birakma maynak!");
 
                     return;
                 }
