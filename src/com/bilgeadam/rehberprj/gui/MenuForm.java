@@ -1,6 +1,8 @@
 package com.bilgeadam.rehberprj.gui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuForm extends JFrame {
     private JPanel jpanel1;
@@ -16,5 +18,13 @@ public class MenuForm extends JFrame {
         setLocationRelativeTo(null);
 
 
+        ekleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EkleForm ekle = new EkleForm();
+                ekle.setVisible(true);
+
+            }
+        });
     }
 }

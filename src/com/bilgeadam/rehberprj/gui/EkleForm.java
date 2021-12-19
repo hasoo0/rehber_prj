@@ -39,6 +39,7 @@ public class EkleForm extends JFrame {
                     kisi.setAd(adTF.getText());
                     kisi.setSoyad(soyadTF.getText());
                     kisi.setMaas(Double.parseDouble(maasTF.getText()));
+                    kisi.setDogtar(CevirmeIslemleri.strToUntilDate(dogtarTF.getText()));
                     kisi.setMobilTel(mobilTelTF.getText());
 
 
@@ -52,7 +53,7 @@ public class EkleForm extends JFrame {
                     }
 
 
-                    kisi.setDogtar(CevirmeIslemleri.strToUntilDate(dogtarTF.getText()));
+                   
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 } catch (ClassNotFoundException ex) {
