@@ -55,9 +55,12 @@ public class Loginform extends JFrame {
                     kullanici.setSifre(String.valueOf(sifrePF.getPassword()));
                     boolean sonuc = KullaniciDAO.giriseYetkilimi(kullanici);
 
-                    if (sonuc)
-                        JOptionPane.showMessageDialog(null, "Girise Yetkilidir.");
-                    else
+                    if (sonuc) {
+                        MenuForm menu = new MenuForm();
+                        menu.setVisible (true);
+                        setVisible(false);
+
+                    } else
                         JOptionPane.showMessageDialog(null, "Girise Yetkili Degildir!");
 
                 } catch (SQLException ex)
