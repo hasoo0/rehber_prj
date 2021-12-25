@@ -53,7 +53,7 @@ public class EkleForm extends JFrame {
                     }
 
 
-                   
+
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 } catch (ClassNotFoundException ex) {

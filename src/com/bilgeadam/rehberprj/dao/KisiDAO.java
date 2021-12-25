@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KisiDAO {
 
@@ -25,6 +27,8 @@ public class KisiDAO {
 
 
         PreparedStatement ps = conn.prepareStatement(sorgu);
+
+        // bu assagidakileri ahmetle bulustugunda ona sor
 
         ps.setInt(1, kisi.getNo());
         ps.setString(2, kisi.getAd());
@@ -45,6 +49,15 @@ public class KisiDAO {
         else
             return false;
 
+    }
+    public  static List<KisiDTO> listele()
+    {
+        List<KisiDTO> kisiListele = new ArrayList<>();
+
+        // bu listeyi veritabanindan dolduracagiz.
+
+
+        return kisiListele;
     }
 
 }
