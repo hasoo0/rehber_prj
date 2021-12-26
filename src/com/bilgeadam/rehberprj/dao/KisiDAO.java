@@ -50,9 +50,96 @@ public class KisiDAO {
             return false;
 
     }
-    public  static List<KisiDTO> listele()
-    {
+
+
+
+
+
+    public static boolean guncelle(KisiDTO kisi)
+            throws SQLException, ClassNotFoundException {
+
+
+        Connection conn = VTBaglanti.baglantiGetir();
+
+        String sorgu = "update kisi set ad=?,soyad=?,maas=?,dogtar=?, mobil_tel=? where no=?";
+
+        PreparedStatement ps = conn.prepareStatement(sorgu);
+
+
+        ps.setInt(6, kisi.getNo());
+        ps.setString(1, kisi.getAd());
+        ps.setString(2, kisi.getSoyad());
+        ps.setDouble(3, kisi.getMaas());
+
+        if (kisi.getDogtar()==null)
+            ps.setDate(4,null);
+        else
+            ps.setDate(4,CevirmeIslemleri.utilToSqlDate(kisi.getDogtar()));
+
+        ps.setDate(4, CevirmeIslemleri.utilToSqlDate(kisi.getDogtar()));
+        // ps.setDate(5, new java.sql.Date(kisi.getDogtar().get.time()));
+        ps.setString(5, kisi.getMobilTel());
+
+        int sonuc = ps.executeUpdate();
+        ps.close();
+        VTBaglanti.baglantiKapat(conn);
+
+        if (sonuc > 0) {
+            return true;
+        } else
+            return false;
+    }
+        public static boolean sil(int no)
+            throws SQLException, ClassNotFoundException {
+
+
+        Connection conn = VTBaglanti.baglantiGetir();
+
+        String sorgu = "delete from kisi where no=?";
+
+
+        PreparedStatement ps = conn.prepareStatement(sorgu);
+
+        ps.setInt(1, no);
+        int sonuc = ps.executeUpdate();
+
+
+        ps.close();
+        VTBaglanti.baglantiKapat(conn);
+
+        if (sonuc > 0) {
+            return true;
+        } else
+            return false;
+
+    }
+    public  static List<KisiDTO> listele() throws SQLException, ClassNotFoundException {
         List<KisiDTO> kisiListele = new ArrayList<>();
+
+        Connection conn = VTBaglanti.baglantiGetir();
+
+        String sorgu = "select  no,ad,soyad,maas,dogtar,mobil_tel from kisi";
+
+
+        PreparedStatement ps = conn.prepareStatement(sorgu);
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next())
+        {
+            KisiDTO kisi = new KisiDTO();
+            kisi.setNo(rs.getInt("no"));
+            kisi.setAd(rs.getString("ad"));
+            kisi.setSoyad(rs.getString("soyad"));
+            kisi.setMaas(rs.getDouble("maas"));
+            kisi.setDogtar(CevirmeIslemleri.sqlutilToSqlDate(rs.getDate("dogtar")));
+            kisi.setMobilTel(rs.getString("mobil_tel"));
+
+            kisiListele.add(kisi);
+
+        }
+        rs.close();
+        ps.close();
+        VTBaglanti.baglantiKapat(conn);
 
         // bu listeyi veritabanindan dolduracagiz.
 
